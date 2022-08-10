@@ -58,9 +58,9 @@ EmpiricalCalibration,Suggests,testthat
 EmpiricalCalibration,Suggests,Cyclops
 EmpiricalCalibration,Suggests,survival
 EmpiricalCalibration,Suggests,Sequential
-EmpiricalCalibration,Version,3.1.0
+EmpiricalCalibration,Version,3.1.1
 EmpiricalCalibration,LinkingTo,Rcpp
-EmpiricalCalibration,MD5sum,b0debb39b0a87962e46bff4204f159fa
+EmpiricalCalibration,MD5sum,9b0eb379c73afebf84790afb54a4f61f
 ParallelLogger,Depends,R (>= 4.0.0)
 ParallelLogger,Imports,snow
 ParallelLogger,Imports,xml2

@@ -1,7 +1,3 @@
----
----
----
-
 # OHDSI Hades R Packages Dependencies
 
 2022-07-31
@@ -143,7 +139,7 @@ dependency_report(pkg)
 Reviewing output (rendered as HTML in browser):
 
 | Package version                                                                                               | 1.4.0 |
-|:--------------------------------------------------------------------------------------------------------------|-------|
+|:-----------------------------------------------------------|------------|
 | Number of strong dependencies                                                                                 | 185   |
 | Number of all dependencies                                                                                    | 185   |
 | Number of parent packages                                                                                     | 24    |
@@ -155,7 +151,7 @@ Reviewing output (rendered as HTML in browser):
 Parent packages **`PatientLevelPrediction`** and **`EnsemblePatientLevelPrediction`** are the heaviest. Also, their co-heaviness larger than 10. The co-heaviness measures the number of additional dependencies that two parent packages simultaneously import and are only imported by the two parents.
 
 | Parent 1                   | Parent 2                           | Co-heaviness on hades | Co-heaviness as Jaccard coeffcient |
-|:---------------------------|:-----------------------------------|----------------------:|-----------------------------------:|
+|:----------------|:-------------------|----------------:|-------------------:|
 | **PatientLevelPrediction** | **EnsemblePatientLevelPrediction** |                    40 |                              0.976 |
 
 It would be useful to treat these two as outliers and focus on the other 22 packages first.
@@ -192,4 +188,18 @@ selected_deps = all_deps %>%
   as_tibble() %>%
   filter(Package %in% c('RJSONIO')) 
 selected_deps
+```
+
+`EvidenceSynthesis` seems to have a surprising level of heaviness, with a large number of unique dependencies. Taking a closer look here.
+
+```{r}
+if (!require("pkgdepR", quietly = TRUE))
+  install.packages("pkgdepR", repos="https://cloud.r-project.org")
+```
+
+```{r}
+library(EvidenceSynthesis)
+tags <- 'EvidSynth'
+evidSynDeps <- pkgdepR::deps(pkg = "EvidenceSynthesis")
+plot(evidSynDeps, height = "500px", main = list(text = NULL))
 ```
